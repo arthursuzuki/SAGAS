@@ -1,0 +1,5 @@
+- Protótipo de baixa fidelidade da parte física feito e lógica do código concluida
+- Pesquisar sobre design de produto
+- Definir o material/modo de construção da caixa
+- Pesquisar sobre peças diferenciadas por resistência elétrica e como implementar essa diferença em código
+- Criar o produto final/MVP

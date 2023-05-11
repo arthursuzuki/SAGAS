@@ -55,11 +55,29 @@ void Latch(){
 }
 
 void setup(){
+  Serial.begin(9600);
   pinMode(led, OUTPUT);
   pinMode(botao1, INPUT_PULLUP);
   pinMode(botao2, INPUT_PULLUP);
 }
 
 void loop(){
-  Xor();
+  if (Serial.available()){
+    String data = Serial.readString();
+    if (data==("Not")){
+      Not();
+    }
+    if (data==("Or")){
+      Or();
+    }
+    if (data==("And")){
+      And();
+    }
+    if (data==("Xor")){
+      Xor();
+    }
+    if(data==("Latch")){
+      Latch();
+    }
+  }
 }

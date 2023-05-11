@@ -1,7 +1,7 @@
 # SAGAS
 Projetos do grupo SAGAS
 
-Arthur Suzuki
+Arthur Suzuki ajls@cesar.school
 
 Sara Lustosa
 

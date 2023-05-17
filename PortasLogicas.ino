@@ -1,4 +1,5 @@
 const int amper = A5;
+const int variacao = 3;
 int valorPot;
 
 const int led = 13;
@@ -68,22 +69,22 @@ void loop(){
   valorPot = analogRead(amper);
   Serial.println(valorPot);
 
-  if ((valorPot >= 27) && (valorPot <= 29)){
+  if ((valorPot >= (28 - variacao)) && (valorPot <= (28 + variacao))){
     Fio();
   }
-  else if ((valorPot >= 232) && (valorPot <= 234)){
+  else if ((valorPot >= (131 - variacao)) && (valorPot <= (131 + variacao))){
     Not();
   }
-  else if ((valorPot >= 237) && (valorPot <= 239)){
+  else if ((valorPot >= (238 - variacao)) && (valorPot <= (238 + variacao))){
     Or();
   }
-  else if ((valorPot >= 485) && (valorPot <= 487)){
+  else if ((valorPot >= (486 - variacao)) && (valorPot <= (486 + variacao))){
     And();
   }
-  else if ((valorPot >= 510) && (valorPot <= 514)){
+  else if ((valorPot >= (511 - variacao)) && (valorPot <= (511 + variacao))){
     Xor();
   }
-  else if ((valorPot >= 591) && (valorPot <= 593)){
+  else if ((valorPot >= (592 - variacao)) && (valorPot <= (592 + variacao))){
     Latch();
   }
 }

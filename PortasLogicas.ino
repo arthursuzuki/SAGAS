@@ -1,3 +1,6 @@
+const int amper = A5;
+int valorPot;
+
 const int led = 13;
 const int botao1 = 12;
 const int botao2 = 11;
@@ -58,8 +61,29 @@ void setup(){
   pinMode(led, OUTPUT);
   pinMode(botao1, INPUT_PULLUP);
   pinMode(botao2, INPUT_PULLUP);
+  Serial.begin(9600);
 }
 
 void loop(){
-  Xor();
+  valorPot = analogRead(amper);
+  Serial.println(valorPot);
+
+  if ((valorPot >= 27) && (valorPot <= 29)){
+    Fio();
+  }
+  else if ((valorPot >= 232) && (valorPot <= 234)){
+    Not();
+  }
+  else if ((valorPot >= 237) && (valorPot <= 239)){
+    Or();
+  }
+  else if ((valorPot >= 485) && (valorPot <= 487)){
+    And();
+  }
+  else if ((valorPot >= 510) && (valorPot <= 514)){
+    Xor();
+  }
+  else if ((valorPot >= 591) && (valorPot <= 593)){
+    Latch();
+  }
 }

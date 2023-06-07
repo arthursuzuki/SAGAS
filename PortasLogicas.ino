@@ -1,3 +1,7 @@
+const int amper = A5;
+const int variacao = 5;
+int valorPot;
+
 const int led = 13;
 const int botao1 = 12;
 const int botao2 = 11;
@@ -54,30 +58,47 @@ void Latch(){
   }
 }
 
+bool comparar(int valorLido, int valorReferencia, int valorVariacao){
+  return valorLido >= (valorReferencia - valorVariacao) && valorLido <= (valorReferencia + valorVariacao);
+}
+
 void setup(){
-  Serial.begin(9600);
   pinMode(led, OUTPUT);
   pinMode(botao1, INPUT_PULLUP);
   pinMode(botao2, INPUT_PULLUP);
+  Serial.begin(9600);
 }
 
 void loop(){
-  if (Serial.available()){
-    String data = Serial.readString();
-    if (data==("Not")){
-      Not();
-    }
-    if (data==("Or")){
-      Or();
-    }
-    if (data==("And")){
-      And();
-    }
-    if (data==("Xor")){
-      Xor();
-    }
-    if(data==("Latch")){
-      Latch();
-    }
+  valorPot = analogRead(amper);
+  //Serial.println(valorPot);
+
+  if (comparar(valorPot, 28, variacao)){
+    And();
+    Serial.println("and");
+  }
+  else if (comparar(valorPot, 131, variacao)){
+    Xor();
+    Serial.println("xor");
+  }
+  else if (comparar(valorPot, 238, variacao)){
+    Not();
+    Serial.println("not");
+  }
+  else if (comparar(valorPot, 486, variacao)){
+    Fio();
+    Serial.println("fio");
+  }
+  else if (comparar(valorPot, 511, variacao)){
+    Or();
+    Serial.println("or");
+  }
+  else if (comparar(valorPot, 592, variacao)){
+    Latch();
+    Serial.println("latch");
+  }
+  else{
+    digitalWrite(led, LOW);
+    Serial.println(0);
   }
 }

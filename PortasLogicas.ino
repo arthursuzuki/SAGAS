@@ -5,6 +5,7 @@ int valorPot;
 const int led = 13;
 const int botao1 = 12;
 const int botao2 = 11;
+#define led2 19
 
 bool estadoLed = LOW;
 bool botao2Pressionado = false;
@@ -72,6 +73,9 @@ void setup(){
 void loop(){
   valorPot = analogRead(amper);
   //Serial.println(valorPot);
+  if (valorPot>0){
+    digitalWrite(led2, HIGH);
+  }
 
   if (comparar(valorPot, 28, variacao)){
     And();
